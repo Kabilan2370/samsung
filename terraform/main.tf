@@ -13,11 +13,10 @@ locals {
 }
 
 # Get default subnets
-data "aws_subnets" "default" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_default_vpc.default.id]
-  }
+resource "aws_subnet" "public" {
+  vpc_id            = local.default_vpc_id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-east-2a"
 }
 
 # Security Group
