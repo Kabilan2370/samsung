@@ -2,7 +2,7 @@
 
 ### strapi projects foler and files structure
 
-    your-strapi-project/
+    my-strapi-app/
     │
     ├── Dockerfile
     ├── .dockerignore
