@@ -1,4 +1,4 @@
-[200~variable "aws_region" {
+variable "aws_region" {
   type    = string
   default = "us-east-2"
 }
@@ -23,4 +23,13 @@ variable "image_tag" {
   description = "Docker image tag to deploy"
   default = "latest"
 }
+
+variable "ami_id" {
+  description = "AMI ID for the EC2 instance"
+  type        = string
+}
+
+
+
+
 
