@@ -22,6 +22,7 @@
     └── terraform/              ← All Terraform code
         ├── main.tf
         ├── variables.tf
+        ├── terraform.tfvars
         ├── outputs.tf
         ├── user_data.tpl       ← EC2 startup script (install Docker + run Strapi)
 
