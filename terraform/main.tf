@@ -13,10 +13,11 @@ locals {
 }
 
 # Get default subnets
-resource "aws_subnet" "public" {
-  vpc_id            = local.default_vpc_id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-2a"
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [local.default_vpc_id]
+  }
 }
 
 # Security Group
@@ -54,7 +55,7 @@ resource "aws_security_group" "strapi_sg" {
 resource "aws_instance" "strapi" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  subnet_id              = data.aws_subnet.default.ids[0]
+  subnet_id              = data.aws_subnets.default.ids[0]
   vpc_security_group_ids = [aws_security_group.strapi_sg.id]
   key_name               = var.key_name
 
