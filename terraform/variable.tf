@@ -1,0 +1,26 @@
+[200~variable "aws_region" {
+  type    = string
+  default = "us-east-2"
+}
+
+variable "key_name" {
+  description = "EC2 Key pair name for SSH access (must exist in AWS)."
+  type        = string
+}
+
+variable "instance_type" {
+  type    = string
+  default = "t3.micro"
+}
+
+variable "image_repo" {
+  type    = string
+  description = "Docker image repository (e.g. user/strapi or 111.dkr.ecr.region.amazonaws.com/strapi)"
+}
+
+variable "image_tag" {
+  type    = string
+  description = "Docker image tag to deploy"
+  default = "latest"
+}
+
