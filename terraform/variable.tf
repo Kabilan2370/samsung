@@ -7,6 +7,10 @@ variable "ACCOUNT_ID" {
   type = string
 }
 
+variable "REGION" {
+  type = string
+}
+
 variable "key_name" {
   description = "EC2 Key pair name for SSH access (must exist in AWS)."
   type        = string
