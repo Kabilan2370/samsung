@@ -7,6 +7,10 @@ variable "ACCOUNT_ID" {
   type = string
 }
 
+variable "aws_account_id" {
+  type = string
+}
+
 variable "REGION" {
   type = string
 }
