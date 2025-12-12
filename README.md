@@ -36,7 +36,6 @@ Docker (Build Strapi image)
 
 Terraform (Create AWS EC2 infrastructure)
 
-AWS EC2 (Host the container)
 
 Default VPC (Networking)
 
