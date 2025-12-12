@@ -5,4 +5,5 @@ image_repo    = "339713165486.dkr.ecr.us-east-1.amazonaws.com/strapi" # your Doc
 image_tag     = "latest"
 ami_id        = "ami-0fa91bc90632c73c9"
 ACCOUNT_ID    = "339713165486"
+aws_account_id = "339713165486"
 REGION        = "eu-north-1"
