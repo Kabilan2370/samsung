@@ -23,7 +23,7 @@ variable "instance_type" {
 
 variable "image_repo" {
   type    = string
-  description = "Docker image repository (e.g. user/strapi or 111.dkr.ecr.region.amazonaws.com/strapi)"
+  description = "301782007642.dkr.ecr.region.amazonaws.com/strapi)"
 }
 
 variable "image_tag" {
