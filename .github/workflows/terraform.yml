@@ -49,8 +49,11 @@ jobs:
       - name: Terraform Apply (manual approval)
         if: ${{ github.event.inputs.auto_approve != 'true' }}
         run: |
-          echo "Now running terraform apply (interactive). Use -auto-approve=true if you want no prompt."
-          terraform -chdir=terraform apply -input=false -var="image_repo=${{ github.event.inputs.image_repo }}" -var="image_tag=${{ github.event.inputs.image_tag }}"
+          run: |
+          echo "Manual approval mode"
+          terraform -chdir=terraform apply -input=false \
+            -var="image_repo=${{ steps.img.outputs.repo }}" \
+            -var="image_tag=${{ steps.img.outputs.tag }}"
 
 
 
