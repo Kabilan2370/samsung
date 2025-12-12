@@ -66,7 +66,7 @@ resource "aws_iam_role_policy" "ecr_policy" {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "strapi-instance-pro"
+  # name = "strapi-instance-pro"
   role = aws_iam_role.ecr_per_role.name
 }
 
