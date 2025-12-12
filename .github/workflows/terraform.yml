@@ -5,9 +5,9 @@ on:
     inputs:
     
       image_repo:
-        description: 'Image repository.dkr.ecr.us-east-1.amazonaws.com/strapi'
+        description: '301782007642.dkr.ecr.eu-north-1.amazonaws.com/strapi'
         required: true
-        default: 'your-docker-repo/strapi'
+        default: 'docker-strapi-repo/strapi'
         
       image_tag:
         description: 'Image tag to deploy'
@@ -51,3 +51,4 @@ jobs:
         run: |
           echo "Now running terraform apply (interactive). Use -auto-approve=true if you want no prompt."
           terraform -chdir=terraform apply -input=false -var="image_repo=${{ github.event.inputs.image_repo }}" -var="image_tag=${{ github.event.inputs.image_tag }}"
+
