@@ -34,8 +34,8 @@ data "aws_security_groups" "strapi_sg" {
 }
 
 # iam role
-resource "aws_iam_role" "ecr-per-role" {
-  name = "ecr-access"
+resource "aws_iam_role" "ecr_per_role" {
+  # name = "ecr-access"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -48,8 +48,8 @@ resource "aws_iam_role" "ecr-per-role" {
 }
 
 resource "aws_iam_role_policy" "ecr_policy" {
-  name = "ec2-ecr-access"
-  role = aws_iam_role.ecr-per-role.id
+  # name = "ec2-ecr-access"
+  role = aws_iam_role.ecr_per_role.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -66,8 +66,8 @@ resource "aws_iam_role_policy" "ecr_policy" {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "strapi-instance-profile"
-  role = aws_iam_role.ecr-per-role.name
+  name = "strapi-instance-pro"
+  role = aws_iam_role.ecr_per_role.name
 }
 
 
