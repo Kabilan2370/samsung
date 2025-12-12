@@ -23,6 +23,12 @@ usermod -aG docker ubuntu
 
 IMAGE="${image_repo}:${image_tag}"
 
+ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+REGION="$(curl -s http://169.254.169.254/latest/meta-data/placement/region)"
+
+aws ecr get-login-password --region $REGION | \
+docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+
 # If your image is in ECR and requires login, prefer an IAM instance role.
 # Optional: add aws ecr get-login-password | docker login ... here if you must.
 
@@ -35,3 +41,4 @@ docker run -d --name strapi \
   -e DATABASE_CLIENT=postgres \
   -v /var/lib/strapi:/srv/app/data \
   $IMAGE
+
