@@ -82,6 +82,12 @@ resource "aws_instance" "strapi" {
   key_name               = var.key_name
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
+  root_block_device {
+    volume_size = 25 
+    volume_type = "gp3"
+    delete_on_termination = true
+  }
+
 
   user_data = templatefile("${path.module}/user_data.tpl", {
     image_repo = var.image_repo
