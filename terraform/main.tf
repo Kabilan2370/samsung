@@ -91,7 +91,6 @@ resource "aws_instance" "strapi" {
 
   user_data = templatefile("${path.module}/user_data.tpl", {
     image_repo = var.image_repo
-    image_url  = var.image_url
     image_tag  = var.image_tag
     aws_region = var.aws_region
     
