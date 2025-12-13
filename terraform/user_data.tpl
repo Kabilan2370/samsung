@@ -50,7 +50,6 @@ docker pull ${image_repo}:${image_tag}
 
 docker run -d \
   --name strapi-postgres \
-  --network group-net \
   -e POSTGRES_USER=strapi \
   -e POSTGRES_PASSWORD=strapi123 \
   -e POSTGRES_DB=strapi_db \
@@ -59,7 +58,6 @@ docker run -d \
 
 sudo docker run -d \
   --name strapi \
-  --network group-net \
   -p 1337:1337 \
   -e DATABASE_CLIENT=postgres \
   -e DATABASE_HOST=strapi-postgres \
@@ -72,6 +70,7 @@ sudo docker run -d \
   -e ADMIN_JWT_SECRET=myAdminJWT \
   -e JWT_SECRET=myJWT \
   ${image_repo}:${image_tag}
+
 
 
 
