@@ -20,7 +20,7 @@ variable "instance_type" {
 
 variable "image_repo" {
   type    = string
-  description = "339713165486.dkr.ecr.us-east-2.amazonaws.com/strapi)"
+  description = "339713165486.dkr.ecr.us-east-2.amazonaws.com/docker-strapi)"
 }
 
 variable "image_tag" {
