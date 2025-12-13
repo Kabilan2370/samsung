@@ -7,7 +7,7 @@ on:
       image_repo:
         description: '339713165486.dkr.ecr.us-east-2.amazonaws.com/docker-strapi'
         required: true
-        default: 'docker-strapi-repo/strapi'
+        default: '339713165486.dkr.ecr.us-east-2.amazonaws.com/docker-strapi'
         
       image_tag:
         description: 'Image tag to deploy'
@@ -54,6 +54,7 @@ jobs:
           terraform -chdir=terraform apply -input=false \
             -var="image_repo=${{ needs.ci.outputs.image_repo }}" \
             -var="image_tag=${{ needs.ci.outputs.image_tag }}"
+
 
 
 
