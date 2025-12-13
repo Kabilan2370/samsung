@@ -42,23 +42,35 @@ sudo ./aws/install
 aws ecr get-login-password --region ${aws_region} | \
 docker login --username AWS --password-stdin ${image_repo}
 
-cat <<EOF > /home/ubuntu/.env
-NODE_ENV=production
-ADMIN_JWT_SECRET=admin123
-JWT_SECRET=jwt123
-APP_KEYS=VPXRhnkNBdN0vJ1ij4vwmJEF/ZA/HXvOxT5Xcd/IQjc=,gn7T/0z8mUXPIyUR/eg56ScOmdP3wly+kUz6MvE22Xc=,iuFsOmJiIIJptaGrv7w45BOEUDTLk73eMcBd6dVM+bE=,pf62g1k+rigKtemW1mRXVI6P1Bt9nze95ZNDf24ns2E=
-EOF
 
 # Stop old container if exists
 docker rm -f strapi || true
 
-docker run -d --name strapi \
+docker run -d \
+  --name strapi-postgres \
+  --network group-net \
+  -e POSTGRES_USER=strapi \
+  -e POSTGRES_PASSWORD=strapi123 \
+  -e POSTGRES_DB=strapi_db \
+  -v strapi-pgdata:/var/lib/postgresql/data \
+  postgres:15
+
+sudo docker run -d \
+  --name strapi \
+  --network group-net \
   -p 1337:1337 \
-  -e NODE_ENV=production \
   -e DATABASE_CLIENT=postgres \
-  -v /var/lib/strapi:/srv/app/data \
-  --env-file /home/ubuntu/.env \
-  ${image_repo}:${image_tag}
+  -e DATABASE_HOST=strapi-postgres \
+  -e DATABASE_PORT=5432 \
+  -e DATABASE_NAME=strapi_db \
+  -e DATABASE_USERNAME=strapi \
+  -e DATABASE_PASSWORD=strapi123 \
+  -e APP_KEYS=myAppKey \
+  -e API_TOKEN_SALT=mySalt \
+  -e ADMIN_JWT_SECRET=myAdminJWT \
+  -e JWT_SECRET=myJWT \
+  ${image_uri}:${image_tag}
+
 
 
 
