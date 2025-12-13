@@ -3,15 +3,8 @@ variable "aws_region" {
   default = "eu-noth-1"
 }
 
-variable "ACCOUNT_ID" {
-  type = string
-}
 
 variable "aws_account_id" {
-  type = string
-}
-
-variable "AWS_REGION" {
   type = string
 }
 
@@ -27,13 +20,12 @@ variable "instance_type" {
 
 variable "image_repo" {
   type    = string
-  description = "301782007642.dkr.ecr.region.amazonaws.com/strapi)"
+  description = "339713165486.dkr.ecr.us-east-2.amazonaws.com/strapi)"
 }
 
 variable "image_tag" {
   type    = string
   description = "Docker image tag to deploy"
-  default = "latest"
 }
 
 variable "ami_id" {
