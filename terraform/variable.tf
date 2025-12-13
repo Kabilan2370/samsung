@@ -18,12 +18,8 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-variable "image_repo" {
-  type    = string
-  description = "339713165486.dkr.ecr.us-east-2.amazonaws.com"
-}
 
-variable "image_url" {
+variable "image_repo" {
   type    = string
   description = "339713165486.dkr.ecr.us-east-2.amazonaws.com/docker-strapi"
 }
